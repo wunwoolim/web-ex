@@ -17,6 +17,7 @@ public class User {
 		this.password = password;
 		this.name=name;
 	}
+	
 	public User(UserRequestDto user) {
 		this.username = user.getUsername();
 		this.password = user.getPassword();
@@ -47,4 +48,5 @@ public class User {
 	public void setName(String name) {
 		this.name = name;
 	}
+	
 }

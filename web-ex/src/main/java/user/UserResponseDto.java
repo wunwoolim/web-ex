@@ -38,7 +38,7 @@ public class UserResponseDto {
 	
 	@Override
 	public String toString() {
-		return String.format("%d) %s%s ", this.id,this.username,this.password,this.name);
+		return String.format("%d) %s/%s : %s ", this.id,this.username,this.password,this.name);
 	}
 	
 }

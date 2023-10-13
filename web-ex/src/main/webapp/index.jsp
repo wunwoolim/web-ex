@@ -16,7 +16,6 @@
 <body>
 	<%
 			UserDao userDao = UserDao.getInstance();
-			System.out.println("size1 : " + userDao.getSize());
 			
 			UserRequestDto user = new UserRequestDto("apple","1234");
 
@@ -25,9 +24,11 @@
 			boolean result = userDao.createUser(user);
 			System.out.println(result);
 			
+			//false 확인용
 			result = userDao.createUser(user);
 			System.out.println(result);
 			System.out.println(userDao.getSize());
+			
 			//회원조회
 			// 한명 조회 & 전체 조회
 			UserResponseDto responseUser = userDao.findByUsername("apple");
@@ -35,22 +36,30 @@
 			
 			ArrayList<UserResponseDto> list = userDao.findAll();
 			System.out.println("list : "+list);
+			
 			//회원정보 수정 --> 비밀번호
 			// 비밀번호 검증
 			userDao.setUser(user, "1111");
 			responseUser =  userDao.findByUsername("apple");
 			System.out.println("responseUser : "+responseUser);
+			System.out.println("list : "+list);
+			
 			
 			user.setPassword("0000");
 			userDao.setUser(user, "2222");
 			responseUser =  userDao.findByUsername("apple");
 			System.out.println("responseUser : "+responseUser);
+			System.out.println(userDao.getSize());
+			
 			//회원탈퇴
 			// 비밀번호 검증
 			user.setPassword("1111");
 			result = userDao.delsetUser(user);
 			System.out.println("delete user : "+result);
-			System.out.println("list : "+list);
+			System.out.println("before : "+list);
+			list = userDao.findAll();
+			System.out.println("afrer : "+list);
+			
 	%>
 	
 </body>

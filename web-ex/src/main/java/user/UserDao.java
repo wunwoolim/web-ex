@@ -113,6 +113,7 @@ public class UserDao {
 		for(int i=0; i<list.size(); i++) {
 			User user = list.get(i);
 			respons.add(new UserResponseDto(user));
+			return respons;
 		}
 
 		return null;
@@ -138,7 +139,7 @@ public class UserDao {
 			return false;
 		}
 		
-		if(target.getPassword().equals(user.getPassword())) {
+		if(!target.getPassword().equals(user.getPassword())) {
 			return false;
 		}
 		
