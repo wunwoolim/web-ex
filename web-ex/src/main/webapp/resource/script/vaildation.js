@@ -1,6 +1,13 @@
 /**
  * 
  */
+const form = document.getElementById("form");
+form.addEventListener("submit", e =>{
+	e.preventDefault();
+	checkForm(form);
+});
+
+
 
 function checkForm(form){
 	
@@ -11,21 +18,27 @@ function checkForm(form){
 	gender = form.gender.value;
 	tel = form.tel.value;
 	pnum = form.pnum.value;
-	
+		
 	if(username == ""){
-		alert("아이디는 필수 입력값입니다.");
+		document.getElementById("usernameCheck").style.display = "block";
 	}else if(userpassword == ""){
-		alert("비밀번호는 필수 입력값입니다.");
+		document.getElementById("usernameCheck").style.display = "none";
+		document.getElementById("passwordCheck").style.display = "block";
 	}else if(name == ""){
-		alert("이름은 필수 입력값입니다.");
+		document.getElementById("passwordCheck").style.display = "none";
+		document.getElementById("nameCheck").style.display = "block";
 	}else if(birth == ""){
-		alert("생년월일은 필수 입력값입니다.");
+		document.getElementById("nameCheck").style.display = "none";
+		document.getElementById("birthCheck").style.display = "block";
 	}else if(gender == ""){
-		alert("성별은 필수 선택값입니다.");
+		document.getElementById("birthCheck").style.display = "none";
+		document.getElementById("genderCheck").style.display = "block";
 	}else if(tel == ""){
-		alert("통신사는 필수 선택값입니다.");
+		document.getElementById("genderCheck").style.display = "none";
+		document.getElementById("telCheck").style.display = "block";
 	}else if(pnum == ""){
-		alert("핸드폰 번호는 필수 입력값입니다.");
+		document.getElementById("telCheck").style.display = "none";
+		document.getElementById("pnumCheck").style.display = "block";
 	}else{
 		form.submit();
 	}

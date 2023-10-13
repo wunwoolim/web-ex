@@ -113,10 +113,8 @@ public class UserDao {
 		for(int i=0; i<list.size(); i++) {
 			User user = list.get(i);
 			respons.add(new UserResponseDto(user));
-			return respons;
 		}
-
-		return null;
+		return respons;
 	}
 	
 	public boolean setUser(UserRequestDto user, String password) {
