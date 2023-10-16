@@ -60,6 +60,26 @@ public class UserDao {
 		return false;
 	}
 	
+	public boolean duplicatedUser(UserRequestDto user) {
+		for(int i=0; i<list.size(); i++) {
+			if(user.getUsername().equals((list).get(i).getUsername()) && user.getPassword().equals((list).get(i).getPassword())) {
+				return true;
+			}
+		}
+		
+		return false;
+	}
+	
+	public boolean passwoerUser(UserRequestDto user) {
+		for(int i=0; i<list.size(); i++) {
+			if(user.getPassword().equals((list).get(i).getPassword())) {
+				return true;
+			}
+		}
+		
+		return false;
+	}
+	
 	private int generateId() {
 		int id = 0;
 		boolean idDupl = false;
@@ -98,9 +118,8 @@ public class UserDao {
 	
 	private User getUser(UserRequestDto userDto) {
 		User user = null;
-		
 		for(int i=0; i<list.size(); i++) {
-			if(list.get(i).getUsername() == userDto.getUsername()) {
+			if(list.get(i).getUsername().equals(userDto.getUsername())) {
 				user = list.get(i);
 			}
 		}
@@ -117,20 +136,26 @@ public class UserDao {
 		return respons;
 	}
 	
-	public boolean setUser(UserRequestDto user, String password) {
+	public boolean setUser(UserRequestDto user) {
 		User target = getUser(user);
 		
 		if(target == null) {
 			return false;
 		}
-		if(!target.getPassword().equals(user.getPassword())) {
-			return false;
-		}
-		target.setPassword(password);
+		target.setUsername(user.getUsername());
+		target.setPassword(user.getPassword());
+		target.setName(user.getName());
+		target.setBirth(user.getBirth());
+		target.setGender(user.getGender());
+		target.setTel(user.getTel());
+		target.setPnum(user.getPnum());
+		
 		return true;
 	}
 	
 	public boolean delsetUser(UserRequestDto user) {
+		System.out.println("user : "+user.getUsername());
+		
 		User target = getUser(user);
 		
 		if(target == null) {

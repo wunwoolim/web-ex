@@ -24,23 +24,28 @@
 		String tel =	request.getParameter("tel");
 		String pnum =	request.getParameter("pnum");
 		
-		session.setAttribute("name",name);
+		
 		
 		UserDao userDao = UserDao.getInstance();
 		UserRequestDto user = new UserRequestDto(username,userpassword,name,birth,gender,tel,pnum);
 		
 		boolean result = userDao.createUser(user);
-		//System.out.println(result);
 		
-		UserResponseDto responseUser = userDao.findByUsername(username);
+		
+		//UserResponseDto responseUser = userDao.findByUsername(username);
 		//System.out.println("responseUser : "+responseUser);
 		
 		ArrayList<UserResponseDto> list = userDao.findAll();
 		System.out.println("list : "+list);
 		
 		System.out.println(userDao.getSize());
-		response.sendRedirect("mypage.jsp?username="+username);
 		
+		
+		if(result){
+			response.sendRedirect("/login");
+		}else{
+			response.sendRedirect("/join");
+		}
 		
 	%>
 </body>

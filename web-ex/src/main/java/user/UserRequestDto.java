@@ -12,6 +12,10 @@ public class UserRequestDto {
 	
 	public UserRequestDto() {}
 	
+	public UserRequestDto(String password) {
+		this.password = password;
+	}
+	
 	public UserRequestDto(String username,String password,String name,String birth,String gender,String tel,String pnum) {
 		this.username =username;
 		this.password = password;

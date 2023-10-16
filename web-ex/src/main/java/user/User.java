@@ -11,6 +11,11 @@ public class User {
 	private String pnum;
 	
 	public User() {}
+	
+	public User(String password) {
+		this.password = password;
+	}
+	
 	public User(String username,String password,String name,String birth,String gender,String tel,String pnum) {
 		this.username =username;
 		this.password = password;
